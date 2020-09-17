@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Async</title>
+  </head>
+
+  <body>
+    <h1>Async - The Old Way</h1>
+    <p> Callback hell - Callback chaining one after another.</p>
+    <p> To solve this issue, Promises were introduced in ES6.</p>
+    <script>
+     
+      function getRecipe() {
+        setTimeout(() => {
+          const recipeId = [123, 443, 986, 465];
+          console.log(recipeId);
+
+          setTimeout(id => {
+              const recipe = {
+                title: 'Fresh tomato pasta',
+                publisher: 'Rupak',
+              };
+              console.log(`${id}: ${recipe.title}`)
+
+              setTimeout(publisher=> {
+                const recipe2 = { title: 'pizza', publisher:'Rupak' };
+                console.log(recipe)
+              }, 1500, recipe.publisher)
+
+            }, 1500, recipeId[2]
+          );
+        }, 1500);
+      }
+
+      getRecipe();
+    </script>
+  </body>
+</html>
